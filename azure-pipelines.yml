@@ -33,7 +33,6 @@ stages:
         environmentServiceNameAzureRM: 'b76e177a-cb53-46a5-b22a-1cd4ac134c70'
     - task: TerraformTaskV4@4
       displayName: Tf plan
-      commandOptions: '-out $(Build.SourcesDirectory)/tfplanfile'
       inputs:
         provider: 'azurerm'
         command: 'plan'

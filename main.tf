@@ -6,13 +6,13 @@
 
 resource "azurerm_resource_group" "example" {
   name     = "${var.prefix}-resources"
-  location = var.location
+  location = "Central India"
 }
 
 resource "azurerm_virtual_network" "main" {
   name                = "${var.prefix}-network"
   address_space       = ["10.0.0.0/16"]
-  location            = azurerm_resource_group.example.location
+  location            = "Central India"
   resource_group_name = azurerm_resource_group.example.name
 }
 
@@ -25,7 +25,7 @@ resource "azurerm_subnet" "internal" {
 
 resource "azurerm_network_interface" "main" {
   name                = "${var.prefix}-nic"
-  location            = azurerm_resource_group.example.location
+  location            = "Central India"
   resource_group_name = azurerm_resource_group.example.name
 
   ip_configuration {
@@ -37,7 +37,7 @@ resource "azurerm_network_interface" "main" {
 
 resource "azurerm_virtual_machine" "main" {
   name                  = "${var.prefix}-vm"
-  location              = azurerm_resource_group.example.location
+  location              = "Central India"
   resource_group_name   = azurerm_resource_group.example.name
   network_interface_ids = [azurerm_network_interface.main.id]
   vm_size               = "Standard_DS1_v2"
